@@ -2,6 +2,7 @@ import argparse
 from common_utils import read_ip_addresses_from_file
 import ipv4_utils
 import ipv6_utils
+import bitwise_subnet
 
 
 def main() -> None:
@@ -20,7 +21,9 @@ def main() -> None:
         if args.ip_version == 4:
             # Вызов функции для работы с IPv4, если указана версия 4.
             result = ipv4_utils.minimal_subnet_from_ips(ip_addresses)
-            print(result)
+            print(result)  # использование посимвольного сравнениения
+            result = bitwise_subnet.minimal_subnet_from_ips_bitwise(ip_addresses)
+            print(result)  # использование побитовых операций
         elif args.ip_version == 6:
             # Вызов функции для работы с IPv6, если указана версия 6.
             result = ipv6_utils.minimal_subnet_from_ips(ip_addresses)
@@ -35,4 +38,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

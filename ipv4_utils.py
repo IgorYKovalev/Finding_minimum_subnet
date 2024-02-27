@@ -1,10 +1,12 @@
 import ipaddress
 from typing import List
+from timeit_decorator import timeit
 
 
+@timeit
 def minimal_subnet_from_ips(ip_addresses: List[str]) -> str:
     """
-    Возвращает минимальную подсеть для списка IPv4 адресов.
+    Возвращает минимальную подсеть для списка IPv4 адресов с использованием посимвольного сравнениения.
     """
     if not ip_addresses:
         return ''
